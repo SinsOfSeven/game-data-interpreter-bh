@@ -5,4 +5,4 @@ export type Role = 0|1|2|3|4|5|6|7|8|9|10|11|101|102|103|104|105
 export type Attr = "NONE" | "PSY" | "BIO" | "MECH" | "QUA" | "IMG" | "GXY"
 
 
-export default "a"
+export default Role

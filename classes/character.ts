@@ -24,7 +24,10 @@ export class valkyrie extends character{
     //role_name
 }
 export class battle_suit extends valkyrie{
-    constructor(){super()}
+    constructor(suit_id:number){
+        super()
+        this.battle_suit_base_id = suit_id
+    }
     battle_suit_name: string =""
     //battle_suit_abbr
     battle_suit_id:number = 0 //avatar id
@@ -39,11 +42,11 @@ export class battle_suit extends valkyrie{
     skills: Array<number> = []
     tags: Array<number> = []//like time slow, or fire, charge/combo
 }
-export class augment extends battle_suit{
-    constructor(){super()}
-    augment_ult_id:string = ""
-    augment_skills:Array<number> = []
-    augment_tags:Array<number> = []
-}
+// export class augment extends battle_suit{
+//     constructor(){super()}
+//     augment_ult_id:string = ""
+//     augment_skills:Array<number> = []
+//     augment_tags:Array<number> = []
+// }
 
 export default battle_suit
