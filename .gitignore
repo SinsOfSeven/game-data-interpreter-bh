@@ -40,7 +40,10 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+
+#data folders
 data/
+data2/
 
 # TypeScript v1 declaration files
 typings/
