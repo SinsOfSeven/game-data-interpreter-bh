@@ -43,7 +43,7 @@ jspm_packages/
 
 #data folders
 data/
-generated/-
+generated/
 
 # TypeScript v1 declaration files
 typings/
