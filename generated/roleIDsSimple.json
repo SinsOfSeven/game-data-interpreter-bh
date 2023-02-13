@@ -1,0 +1,597 @@
+[
+  {
+    "ID": 101,
+    "role": 1,
+    "sname": "White Comet",
+    "fname": "Kiana",
+    "lname": "Kaslana"
+  },
+  {
+    "ID": 102,
+    "role": 1,
+    "sname": "Valkyrie Ranger",
+    "fname": "Kiana",
+    "lname": "Kaslana"
+  },
+  {
+    "ID": 103,
+    "role": 1,
+    "sname": "Knight Moonbeam",
+    "fname": "Kiana",
+    "lname": "Kaslana"
+  },
+  {
+    "ID": 104,
+    "role": 1,
+    "sname": "Divine Prayer",
+    "fname": "Kiana",
+    "lname": "Kaslana"
+  },
+  {
+    "ID": 105,
+    "role": 1,
+    "sname": "Herrscher of Flamescion",
+    "fname": "Kiana",
+    "lname": "Kaslana"
+  },
+  {
+    "ID": 111,
+    "role": 102,
+    "sname": "Sixth Serenade",
+    "fname": "Kallen",
+    "lname": "Kaslana"
+  },
+  {
+    "ID": 112,
+    "role": 102,
+    "sname": "Ritual Imayoh",
+    "fname": "Kallen",
+    "lname": "Kaslana"
+  },
+  {
+    "ID": 113,
+    "role": 1,
+    "sname": "Herrscher of the Void",
+    "fname": "Kiana",
+    "lname": "Kaslana"
+  },
+  {
+    "ID": 114,
+    "role": 102,
+    "sname": "Sündenjäger",
+    "fname": "Kallen",
+    "lname": "Kaslana"
+  },
+  {
+    "ID": 201,
+    "role": 2,
+    "sname": "Crimson Impulse",
+    "fname": "Mei",
+    "lname": "Raiden"
+  },
+  {
+    "ID": 202,
+    "role": 2,
+    "sname": "Shadow Dash",
+    "fname": "Mei",
+    "lname": "Raiden"
+  },
+  {
+    "ID": 203,
+    "role": 2,
+    "sname": "Valkyrie Bladestrike",
+    "fname": "Mei",
+    "lname": "Raiden"
+  },
+  {
+    "ID": 204,
+    "role": 2,
+    "sname": "Lightning Empress",
+    "fname": "Mei",
+    "lname": "Raiden"
+  },
+  {
+    "ID": 205,
+    "role": 2,
+    "sname": "Herrscher of Thunder",
+    "fname": "Mei",
+    "lname": "Raiden"
+  },
+  {
+    "ID": 211,
+    "role": 101,
+    "sname": "Gyakushinn Miko",
+    "fname": "Sakura",
+    "lname": "Yae"
+  },
+  {
+    "ID": 212,
+    "role": 101,
+    "sname": "Goushinnso Memento",
+    "fname": "Sakura",
+    "lname": "Yae"
+  },
+  {
+    "ID": 213,
+    "role": 101,
+    "sname": "Flame Sakitama",
+    "fname": "Sakura",
+    "lname": "Yae"
+  },
+  {
+    "ID": 214,
+    "role": 101,
+    "sname": "Darkbolt Jonin",
+    "fname": "Sakura",
+    "lname": "Yae"
+  },
+  {
+    "ID": 301,
+    "role": 3,
+    "sname": "Valkyrie Chariot",
+    "fname": "Bronya",
+    "lname": "Zaychik"
+  },
+  {
+    "ID": 302,
+    "role": 3,
+    "sname": "Yamabuki Armor",
+    "fname": "Bronya",
+    "lname": "Zaychik"
+  },
+  {
+    "ID": 303,
+    "role": 3,
+    "sname": "Snowy Sniper",
+    "fname": "Bronya",
+    "lname": "Zaychik"
+  },
+  {
+    "ID": 304,
+    "role": 3,
+    "sname": "Dimension Breaker",
+    "fname": "Bronya",
+    "lname": "Zaychik"
+  },
+  {
+    "ID": 311,
+    "role": 3,
+    "sname": "Wolf's Dawn",
+    "fname": "Bronya",
+    "lname": "Zaychik"
+  },
+  {
+    "ID": 312,
+    "role": 3,
+    "sname": "Black Nucleus",
+    "fname": "Bronya",
+    "lname": "Zaychik"
+  },
+  {
+    "ID": 313,
+    "role": 3,
+    "sname": "Herrscher of Reason",
+    "fname": "Bronya",
+    "lname": "Zaychik"
+  },
+  {
+    "ID": 314,
+    "role": 3,
+    "sname": "Haxxor Bunny",
+    "fname": "Bronya",
+    "lname": "Zaychik"
+  },
+  {
+    "ID": 315,
+    "role": 3,
+    "sname": "SILVERWING: N-EX",
+    "fname": "Bronya",
+    "lname": "Zaychik"
+  },
+  {
+    "ID": 316,
+    "role": 3,
+    "sname": "Bronya",
+    "fname": "Bronya",
+    "lname": "Zaychik"
+  },
+  {
+    "ID": 317,
+    "role": 3,
+    "sname": "Herrscher of Truth",
+    "fname": "Bronya",
+    "lname": "Zaychik"
+  },
+  {
+    "ID": 401,
+    "role": 4,
+    "sname": "Valkyrie Triumph",
+    "fname": "Himeko",
+    "lname": "Murata"
+  },
+  {
+    "ID": 402,
+    "role": 4,
+    "sname": "Scarlet Fusion",
+    "fname": "Himeko",
+    "lname": "Murata"
+  },
+  {
+    "ID": 403,
+    "role": 4,
+    "sname": "Battle Storm",
+    "fname": "Himeko",
+    "lname": "Murata"
+  },
+  {
+    "ID": 404,
+    "role": 4,
+    "sname": "Blood Rose",
+    "fname": "Himeko",
+    "lname": "Murata"
+  },
+  {
+    "ID": 411,
+    "role": 4,
+    "sname": "Kriegsmesser",
+    "fname": "Himeko",
+    "lname": "Murata"
+  },
+  {
+    "ID": 412,
+    "role": 4,
+    "sname": "Vermilion Knight: Eclipse",
+    "fname": "Himeko",
+    "lname": "Murata"
+  },
+  {
+    "ID": 421,
+    "role": 8,
+    "sname": "Blueberry Blitz",
+    "fname": "Liliya",
+    "lname": "Olenyeva"
+  },
+  {
+    "ID": 422,
+    "role": 8,
+    "sname": "Molotov Cherry",
+    "fname": "Rozaliya",
+    "lname": "Olenyeva"
+  },
+  {
+    "ID": 501,
+    "role": 5,
+    "sname": "Valkyrie Pledge",
+    "fname": "Theresa",
+    "lname": "Apocalypse"
+  },
+  {
+    "ID": 502,
+    "role": 5,
+    "sname": "Violet Executer",
+    "fname": "Theresa",
+    "lname": "Apocalypse"
+  },
+  {
+    "ID": 503,
+    "role": 5,
+    "sname": "Sakuno Rondo",
+    "fname": "Theresa",
+    "lname": "Apocalypse"
+  },
+  {
+    "ID": 504,
+    "role": 5,
+    "sname": "Celestial Hymn",
+    "fname": "Theresa",
+    "lname": "Apocalypse"
+  },
+  {
+    "ID": 506,
+    "role": 5,
+    "sname": "Starlit Astrologos",
+    "fname": "Theresa",
+    "lname": "Apocalypse"
+  },
+  {
+    "ID": 511,
+    "role": 5,
+    "sname": "Luna Kindred",
+    "fname": "Theresa",
+    "lname": "Apocalypse"
+  },
+  {
+    "ID": 601,
+    "role": 6,
+    "sname": "Valkyrie Accipiter",
+    "fname": "Hua",
+    "lname": "Fu"
+  },
+  {
+    "ID": 602,
+    "role": 6,
+    "sname": "Shadow Knight",
+    "fname": "Hua",
+    "lname": "Fu"
+  },
+  {
+    "ID": 603,
+    "role": 6,
+    "sname": "Night Squire",
+    "fname": "Hua",
+    "lname": "Fu"
+  },
+  {
+    "ID": 604,
+    "role": 6,
+    "sname": "Phoenix",
+    "fname": "Hua",
+    "lname": "Fu"
+  },
+  {
+    "ID": 611,
+    "role": 6,
+    "sname": "Azure Empyrea",
+    "fname": "Hua",
+    "lname": "Fu"
+  },
+  {
+    "ID": 612,
+    "role": 6,
+    "sname": "Herrscher of Sentience",
+    "fname": "Hua",
+    "lname": "Fu"
+  },
+  {
+    "ID": 702,
+    "role": 7,
+    "sname": "Phantom Iron",
+    "fname": "Rita",
+    "lname": "Rossweisse"
+  },
+  {
+    "ID": 703,
+    "role": 7,
+    "sname": "Umbral Rose",
+    "fname": "Rita",
+    "lname": "Rossweisse"
+  },
+  {
+    "ID": 704,
+    "role": 7,
+    "sname": "Argent Knight: Artemis",
+    "fname": "Rita",
+    "lname": "Rossweisse"
+  },
+  {
+    "ID": 705,
+    "role": 7,
+    "sname": "Fallen Rosemary",
+    "fname": "Rita",
+    "lname": "Rossweisse"
+  },
+  {
+    "ID": 706,
+    "role": 7,
+    "sname": "Spina Astera",
+    "fname": "Rita",
+    "lname": "Rossweisse"
+  },
+  {
+    "ID": 711,
+    "role": 9,
+    "sname": "Swallowtail Phantasm",
+    "fname": "Seele",
+    "lname": "Vollerei"
+  },
+  {
+    "ID": 712,
+    "role": 9,
+    "sname": "Stygian Nymph",
+    "fname": "Seele",
+    "lname": "Vollerei"
+  },
+  {
+    "ID": 713,
+    "role": 9,
+    "sname": "Starchasm Nyx",
+    "fname": "Seele",
+    "lname": "Vollerei"
+  },
+  {
+    "ID": 801,
+    "role": 10,
+    "sname": "Valkyrie Gloria",
+    "fname": "Durandal",
+    "lname": 48655449
+  },
+  {
+    "ID": 802,
+    "role": 10,
+    "sname": "Bright Knight: Excelsis",
+    "fname": "Durandal",
+    "lname": 48655449
+  },
+  {
+    "ID": 803,
+    "role": 10,
+    "sname": "Dea Anchora",
+    "fname": "Durandal",
+    "lname": 48655449
+  },
+  {
+    "ID": 804,
+    "role": 10,
+    "sname": "Palatinus Equinox",
+    "fname": "Durandal",
+    "lname": 48655449
+  },
+  {
+    "ID": 805,
+    "role": 10,
+    "sname": "Durandal",
+    "fname": "Durandal",
+    "lname": 48655449
+  },
+  {
+    "ID": 901,
+    "role": 11,
+    "sname": "Blazing Hope",
+    "fname": "Asuka",
+    "lname": 48655450
+  },
+  {
+    "ID": 1203,
+    "role": 103,
+    "sname": "Mei",
+    "fname": "Mei",
+    "lname": "Raiden"
+  },
+  {
+    "ID": 1304,
+    "role": 105,
+    "sname": "Carole",
+    "fname": "Carole",
+    "lname": "Peppers"
+  },
+  {
+    "ID": 1411,
+    "role": 104,
+    "sname": "{DLC_NICKNAME},",
+    "fname": "Himeko",
+    "lname": "Murata"
+  },
+  {
+    "ID": 2001,
+    "role": 12,
+    "sname": "Driving Thunder",
+    "fname": -1264241873,
+    "lname": 48655451
+  },
+  {
+    "ID": 2101,
+    "role": 13,
+    "sname": "Prinzessin der Verurteilung!",
+    "fname": "Fischl",
+    "lname": 48655452
+  },
+  {
+    "ID": 2201,
+    "role": 14,
+    "sname": "Miss Pink Elf♪",
+    "fname": "Elysia",
+    "lname": 48655453
+  },
+  {
+    "ID": 2202,
+    "role": 14,
+    "sname": "Herrscher of Human: Ego",
+    "fname": "Elysia",
+    "lname": 48655453
+  },
+  {
+    "ID": 2301,
+    "role": 15,
+    "sname": "Infinite Ouroboros",
+    "fname": "Mobius",
+    "lname": 48655454
+  },
+  {
+    "ID": 2401,
+    "role": 16,
+    "sname": "Midnight Absinthe",
+    "fname": "Natasha",
+    "lname": "Cioara"
+  },
+  {
+    "ID": 2501,
+    "role": 105,
+    "sname": "Sweet 'n' Spicy",
+    "fname": "Carole",
+    "lname": "Pepper"
+  },
+  {
+    "ID": 2601,
+    "role": 17,
+    "sname": "Reverist Calico",
+    "fname": "Pardofelis",
+    "lname": 48655478
+  },
+  {
+    "ID": 2701,
+    "role": 18,
+    "sname": "Disciplinary Perdition",
+    "fname": "Aponia",
+    "lname": 48655479
+  },
+  {
+    "ID": 2801,
+    "role": 19,
+    "sname": "Golden Diva",
+    "fname": "Eden",
+    "lname": 48655480
+  },
+  {
+    "ID": 2901,
+    "role": 20,
+    "sname": "Starry Impression",
+    "fname": "Griseo",
+    "lname": 48655481
+  },
+  {
+    "ID": 3001,
+    "role": 21,
+    "sname": "Helical Contraption",
+    "fname": "Vill-V",
+    "lname": 48655482
+  },
+  {
+    "ID": 3101,
+    "role": 22,
+    "sname": "Jade Knight",
+    "fname": "Sushang",
+    "lname": "Li"
+  },
+  {
+    "ID": 3201,
+    "role": 23,
+    "sname": "Chrono Navi",
+    "fname": "Ai",
+    "lname": "Hyperion Λ"
+  },
+  {
+    "ID": 9011,
+    "role": 104,
+    "sname": "{DLC2_NICKNAME},",
+    "fname": 0,
+    "lname": 0
+  },
+  {
+    "ID": 9021,
+    "role": 103,
+    "sname": "Mei",
+    "fname": 0,
+    "lname": 0
+  },
+  {
+    "ID": 9031,
+    "role": 105,
+    "sname": "Carole",
+    "fname": 0,
+    "lname": 0
+  },
+  {
+    "ID": 9041,
+    "role": 106,
+    "sname": "Bronya",
+    "fname": 0,
+    "lname": 0
+  },
+  {
+    "ID": 9051,
+    "role": 107,
+    "sname": "Timido",
+    "fname": 0,
+    "lname": 0
+  }
+]
