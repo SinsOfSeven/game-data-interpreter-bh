@@ -14,10 +14,10 @@ interface ElfSkill {
         Row:number
         Col:number
     }
+    Upgrades:Array<ElfSkillUpgrade>
     SkillName:string
     SkillInfo:string
     SkillTag:string
-    Upgrades:Array<ElfSkillUpgrade>
 }
 interface ElfSkillUpgrade {
     Level:number
@@ -102,7 +102,7 @@ const createElfSkillUpgrade = (skillUp:inElfSkillUpgrade) => {
     return out
 }
 const createElfSkill= (skill:inElfSkill)=>{
-    let out:ElfSkill = {ElfSkillID:0,ElfID:0,ElfName:"",UIPoint:{Row:0,Col:0},SkillName:"",SkillInfo:"",SkillTag:"",Upgrades:[]}
+    let out:ElfSkill = {ElfSkillID:0,ElfID:0,ElfName:"",UIPoint:{Row:0,Col:0},Upgrades:[],SkillName:"",SkillInfo:"",SkillTag:""}
     out.ElfSkillID = skill.ElfSkillID
     out.ElfID = skill.ElfID
     out.ElfName = ElfNames[skill.ElfID]
@@ -131,16 +131,14 @@ setTimeout(() => {
     for (const itr1 of ElfSkillTrees) {
         let out:ElfSkill = createElfSkill(itr1)
         let upgrades:Array<ElfSkillUpgrade> = []
-        for (const itr2 of ElfSkillUpgrades) {
+        for (const itr2 of ElfSkillUpgrades) {            
             if(itr1.ElfSkillID === itr2.ElfSkillID){
-                //console.log(en_map[-2132100036])
                 let temp:ElfSkillUpgrade = createElfSkillUpgrade(itr2)
                 upgrades = upgrades.concat(temp)
             }
         }
         out.Upgrades = upgrades
-        writer.write(JSON.stringify(out)+'\n')
-        
+        writer.write(JSON.stringify(out)+'\n')   
     }
     writer.close()
 }, 3000);
