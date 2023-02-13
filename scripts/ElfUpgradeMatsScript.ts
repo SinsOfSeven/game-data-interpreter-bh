@@ -143,6 +143,6 @@ setTimeout(() => {
         
     }
     writer.close()
-}, 7000);
+}, 3000);
 
 
