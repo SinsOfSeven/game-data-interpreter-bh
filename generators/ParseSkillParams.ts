@@ -7,9 +7,9 @@
  * @returns string replacement of skill text
  */
 export function SkillParamParse(input:string,param1:string|number=0,param2:string|number=0,param3:string|number=0):string{
-    return input.replaceAll(/#(\d)\[(i|f\d)\]/g, (match,p1,/*p2,offset,str,group*/)=>{
-        //console.log(match,p1,/*p2,offset,str,group*/)//debug
-        switch(p1){
+    return input.replaceAll(/#(\d)\[(i|f\d)\]/g, (match,g1,/*g2,offset,str,group*/)=>{
+        //console.log(match,g1,/*g2,offset,str,group*/)//debug
+        switch(g1){
             case '1': return `${param1}`
             case '2': return `${param2}`
             case '3': return `${param3}`
