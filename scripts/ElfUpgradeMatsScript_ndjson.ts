@@ -1,9 +1,11 @@
 import { createWriteStream } from "node:fs"
 import LoadMap from "../generators/TextMapLoader.js"
+import { SkillParamParse, ParamCombine} from "../generators/ParseSkillParams.js"
 import { TextMap } from "../types/types.js"
-const en_map:TextMap = LoadMap("./generated/textmap_en.ndjson")
 import ElfSkillTrees from "../data/ElfSkillMetaData.json" assert {type:'json'}
 import ElfSkillUpgrades from "../data/ElfSkillTreeMetaData.json" assert {type:'json'}
+
+const en_map:TextMap = LoadMap("./generated/textmap_en.ndjson")
 
 
 interface ElfSkill {
@@ -81,7 +83,6 @@ interface ElfSkillsSimple{
     ]
 }
 const ElfNames:{[key:number]:string}={
-    
     101:"Blood Embrace",
     102:"Jingwei's Wings",
     103:"Selune's Elegy",
@@ -121,55 +122,29 @@ const createElfSkill= (skill:inElfSkill)=>{
     out.UIPoint.Col = skill.UIPointColumn
     out.SkillName = en_map[skill.Name.Hash]?en_map[skill.Name.Hash]:skill.Name.Hash.toString()
     out.SkillInfo = en_map[skill.Info.Hash]?en_map[skill.Info.Hash]:skill.Info.Hash.toString()
+        const par1 = `${skill.AbilityParamBase_1}-${ParamCombine(skill.MaxLv,skill.AbilityParamAdd_1,skill.AbilityParamBase_1)}`
+        const par2 = `${skill.AbilityParamBase_2}-${ParamCombine(skill.MaxLv,skill.AbilityParamAdd_2,skill.AbilityParamBase_2)}`
+        const par3 = `${skill.AbilityParamBase_3}-${ParamCombine(skill.MaxLv,skill.AbilityParamAdd_3,skill.AbilityParamBase_3)}`
+        out.SkillInfo = SkillParamParse(out.SkillInfo,par1,par2,par3)
+        out.SkillInfo = out.SkillInfo.replaceAll(/<.*?>/g,"")
     out.SkillTag = en_map[skill.SkillTypeTag.Hash]?en_map[skill.SkillTypeTag.Hash]:skill.SkillTypeTag.Hash.toString()
     return out
 }
 
 
 setTimeout(() => {
-    for (const key in ElfNames) {
-        if (Object.prototype.hasOwnProperty.call(ElfNames, key)) {
-            const element = ElfNames[key];
-            console.log("## ->"+element+"<-")
-            console.log("Skill|Row,Col|Star|Mind Stones :unlock: / :arrow_double_up:| Adv. Skill Mats:unlock: / :arrow_double_up:| Coins :arrow_double_up:")
-            console.log(":-|:-|:-|:-|:-|:-")
-            for (const itr1 of ElfSkillTrees) {
-                if(ElfNames[itr1.ElfID] == element){
-                    let out:ElfSkill = createElfSkill(itr1)
-                    let upgrades:Array<ElfSkillUpgrade> = []
-                    let mind:number = 0
-                    let mindUn:number = 0
-                    let adv:number = 0
-                    let advUn:number = 0
-                    let coins:number = 0
-                    let star:number = 0
-                    let unlock:boolean = true
-                    for (const itr2 of ElfSkillUpgrades) {            
-                        if(itr1.ElfSkillID === itr2.ElfSkillID){
-                            let temp:ElfSkillUpgrade = createElfSkillUpgrade(itr2)
-                            if(unlock){
-                                mindUn = temp.Materials[8641]
-                                advUn = temp.Materials[2008]
-                                unlock = !unlock
-                            }else{ 
-                                mind += temp.Materials[8641]
-                                adv += temp.Materials[2008]
-                            }
-                            coins += temp.Materials[100]
-                            upgrades = upgrades.concat(temp)
-                            star = temp.StarLevel==1
-                            ?1:temp.StarLevel==2
-                            ?2:temp.StarLevel==4
-                            ?3:temp.StarLevel==7
-                            ?4:0
-                        }
-                    }
-                    console.log(`${out.SkillName} | ${out.UIPoint.Row},${out.UIPoint.Col} | ${star}:star: | ${mindUn} / ${mind} | ${advUn} / ${adv} | ${coins}`)
-                }
+    const writer = createWriteStream('./generated/ElfSkillsSimple.json')
+    for (const itr1 of ElfSkillTrees) {
+        let out:ElfSkill = createElfSkill(itr1)
+        let upgrades:Array<ElfSkillUpgrade> = []
+        for (const itr2 of ElfSkillUpgrades) {            
+            if(itr1.ElfSkillID === itr2.ElfSkillID){
+                let temp:ElfSkillUpgrade = createElfSkillUpgrade(itr2)
+                upgrades = upgrades.concat(temp)
             }
-            console.log("\n")
         }
+        out.Upgrades = upgrades
+        writer.write(JSON.stringify(out)+'\n')   
     }
-}, 3000)
-
-
+    writer.close()
+}, 3000);

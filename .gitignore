@@ -45,6 +45,9 @@ jspm_packages/
 data/
 generated/
 
+#unfinished/broken
+scripts/broken
+
 # TypeScript v1 declaration files
 typings/
 
