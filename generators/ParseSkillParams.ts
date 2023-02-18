@@ -1,20 +1,20 @@
 /**
  * Skill Param Replacement
- * @param input string with #d[i] to replace
+ * @param input string with `#d[i|fd]` to replace
  * @param param1 first param to replace
  * @param param2 second param to replace
  * @param param3 third param to replace
  * @returns string replacement of skill text
  */
 export function SkillParamParse(input:string,param1:string|number=0,param2:string|number=0,param3:string|number=0):string{
-    return input.replaceAll(/#(\d)\[(i|f\d)\]/g, (match,g1,/*g2,offset,str,group*/)=>{
+    return input.replaceAll(/#(\d)(|\[(i|f\d)\])/g, (match,g1,/*g2,offset,str,group*/)=>{
         //console.log(match,g1,/*g2,offset,str,group*/)//debug
         switch(g1){
             case '1': return `${param1}`
             case '2': return `${param2}`
             case '3': return `${param3}`
+            default: return match
         }
-        return "ERROR"
     })
 }
 
