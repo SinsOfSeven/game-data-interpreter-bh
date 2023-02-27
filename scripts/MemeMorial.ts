@@ -191,7 +191,7 @@ setTimeout(()=>{
 
     //output
     if(!CSV_MODE)writer.write('[\n')
-    if(CSV_MODE)writer.write(id, name, hp, def, res, attribute, elite)
+    if(CSV_MODE)writer.write('id, name, hp, def, res, attribute, elite')
     BossMap.forEach((e,k)=>{
         PropertiesMap.forEach((element,key) => {
             const boss = e
