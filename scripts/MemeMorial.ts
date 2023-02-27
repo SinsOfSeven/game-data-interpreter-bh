@@ -20,7 +20,13 @@ const BossMap = new Map<string,SinDemonEXSimple>()
 const HardMap = new Map<string,HardSimple>()
 const UniqueMap = new Map<string,UniqueMonsterSimple>()
 
-const writer = createWriteStream('./generated/BossMapNew.json')
+const output_path = "./generated/BossMap"
+let file_ext = ".json"
+const CSV_MODE = true
+if(CSV_MODE){
+    file_ext='.csv'
+}
+const writer = createWriteStream(output_path+file_ext)
 //const MyMap = new Map<number,MemorialBoss>()
 
 function createID(boss:SinDemonEXSimple):string{
@@ -184,7 +190,8 @@ setTimeout(()=>{
     }
 
     //output
-    writer.write('[\n')
+    if(!CSV_MODE)writer.write('[\n')
+    if(CSV_MODE)writer.write(id, name, hp, def, res, attribute, elite)
     BossMap.forEach((e,k)=>{
         PropertiesMap.forEach((element,key) => {
             const boss = e
@@ -197,29 +204,36 @@ setTimeout(()=>{
                 if(hard==undefined){
                     console.log("no matching hard level")
                 }else{
-                    writer.write(JSON.stringify({
-                        [createID(boss)]:{
-                            Name:unique?.Name,
-                            Stats:{
-                                Attr:getAttribute(boss.Attribute),
-                                HP:boss.MonsterHp,
-                                ATK:Number((base.ATK*unique?.AtkRatio*hard.ATKRatio).toPrecision(6)),
-                                DEF:Number((base.DEF*unique?.DefRatio*hard.DEFRatio).toPrecision(6)),
-                                RES:hard?.EleRes,
-                                Elite:base.Elite,
-                            },
-                            MetaData:{
-                                Rank:getRank(boss.MonsterLevel),
-                                Bracket:getBracket(boss.BossId),
-                                Score:boss.BaseScore+boss.ExtraScore,
-                            },
-                        }
-                    })+",\n")
+                    if(CSV_MODE){
+                        //CSV OUTPUT
+                        //id, name, hp, def, res, attribute, elite
+                        writer.write(`${createID(boss)},${unique?.Name},${boss.MonsterHp},${Number((base.DEF*unique?.DefRatio*hard.DEFRatio).toPrecision(6))},${hard?.EleRes},${getAttribute(boss.Attribute)},${base.Elite}`)
+                    }else{
+                        //JSON OUTPUT
+                        writer.write(JSON.stringify({
+                            [createID(boss)]:{
+                                Name:unique?.Name,
+                                Stats:{
+                                    Attr:getAttribute(boss.Attribute),
+                                    HP:boss.MonsterHp,
+                                    ATK:Number((base.ATK*unique?.AtkRatio*hard.ATKRatio).toPrecision(6)),
+                                    DEF:Number((base.DEF*unique?.DefRatio*hard.DEFRatio).toPrecision(6)),
+                                    RES:hard?.EleRes,
+                                    Elite:base.Elite,
+                                },
+                                MetaData:{
+                                    Rank:getRank(boss.MonsterLevel),
+                                    Bracket:getBracket(boss.BossId),
+                                    Score:boss.BaseScore+boss.ExtraScore,
+                                },
+                            }
+                        })+",\n")
+                    }
                 }   
             }
             
         })
     })
-    writer.write(']')
+    if(!CSV_MODE)writer.write(']')
 },3000)
 
