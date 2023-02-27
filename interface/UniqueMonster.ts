@@ -23,3 +23,19 @@ export default interface UniqueMonster {
 interface Hash {
   Hash: number
 }
+
+export interface UniqueMonsterSimple {
+  //Uid:number
+  //Match:string
+  BossId:string
+  MonsterId:number
+  Name:string
+  HpRatio:number
+  AtkRatio:number
+  DefRatio:number
+  SpdRatio:number
+  HpSegs:number
+  Abilities:string
+
+  //CDs:Map<string,number>
+}
