@@ -9,3 +9,11 @@ export default interface EliteAbility {
 interface Hash {
   Hash: number
 }
+
+export interface EliteAbilitySimple {
+  //AbilityName: string
+  Desc: string
+  //EliteAbilityIcon: string
+  Name: string
+  Tag: string
+}

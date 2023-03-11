@@ -28,6 +28,7 @@ export interface UniqueMonsterSimple {
   //Uid:number
   //Match:string
   BossId:string
+  isBoss:boolean
   MonsterId:number
   Name:string
   HpRatio:number

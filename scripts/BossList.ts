@@ -3,25 +3,28 @@ import { SinDemonEXSimple } from "../interface/SinDemonExMonster.js"
 import UniqueMonster from "../interface/UniqueMonster.js"
 import { UniqueMonsterSimple } from "../interface/UniqueMonster.js"
 import { MonsterConfigSimple } from "../interface/MonsterConfig.js"
+import { EliteAbilitySimple } from "../interface/EliteAbility.js"
 
-import { createWriteStream } from "fs"
+import { createWriteStream, realpathSync } from "fs"
 
-import HardLevels from "../data/NPCLevelMetaData.json" assert {type:"json"}
-import ArenaBosses from "../data/SinDemonExMonsterMetaData.json" assert {type:"json"}
+//import HardLevels from "../data/NPCLevelMetaData.json" assert {type:"json"}
+//import ArenaBosses from "../data/SinDemonExMonsterMetaData.json" assert {type:"json"}
 import MonsterConfigs from "../data/MonsterConfigMetaData.json" assert {type:"json"}
 import UniqueMonsters from "../data/UniqueMonsterMetaData.json" assert {type:"json"}
+import EliteAbilites from "../data/EliteAbilityMetaData.json" assert {type:"json"}
 
 import { TextMap } from "../types/types";
 import LoadMap from "../generators/TextMapLoader.js"
 const text_map:TextMap = LoadMap("./generated/textmap_en.ndjson")
 
 const PropertiesMap = new Map<string,MonsterConfigSimple>()
-const BossMap = new Map<string,SinDemonEXSimple>()
-const HardMap = new Map<string,HardSimple>()
+//const BossMap = new Map<string,SinDemonEXSimple>()
+//const HardMap = new Map<string,HardSimple>()
 const UniqueMap = new Map<string,UniqueMonsterSimple>()
+const EliteAbilityMap = new Map<string,EliteAbilitySimple>()
 
-const output_path = "./generated/BossMap"
-let file_ext = ".json"
+const output_path = "./generated/EliteAbilities_And_Enemies"
+let file_ext = ".md"
 const CSV_MODE = false
 if(CSV_MODE){
     file_ext='.csv'
@@ -66,6 +69,12 @@ function keyToString(key:KeyType):string{
 function hardToString(level:number,hardgroup:number):string{
     return level+','+hardgroup
 }
+function getConfigFix(str:string):string|boolean{
+    if(str.includes("Sin")||str.includes("SSS")) return "Memorial"
+    if(str.includes("Abyss")) return "Abyss"
+    if(str.includes("Rouge")||str.includes("Godwar")) return "Elysian Realm"
+    return false
+}
 function getRank(num:number):string{
     switch(num){
         case 1:return 'C'
@@ -80,7 +89,7 @@ function getRank(num:number):string{
         default:return ''
     }
 }
-function getAttribute(num:number):string{
+function getAttribute(num:number|undefined):string{
     switch(num){
         case 0: return "NONE"
         case 1: return "BIO"
@@ -111,33 +120,40 @@ interface KeyType {
 }
 setTimeout(()=>{
     //build maps
-    for (const Boss of ArenaBosses) {
-        BossMap.set(Boss.MonsterId+","+Boss.BossId,{
-            BossId:Boss.BossId,
-            Name:Boss.BossName,
-            Desc:text_map[Boss.BossDesc.hash],
-            GroupId:Boss.BossGroupId,
-            MonsterId:Boss.MonsterId,
-            HardLevel:Boss.HardLevel,
-            HardGroup:Boss.HardLevelGroup,
-            MonsterHp:Boss.MonsterHp,
-            MonsterLevel:Boss.MonsterLevel,
-            NextId:Boss.BossNextId,
-            Attribute:Boss.BossAttribute,
-            BaseScore:Boss.MonsterBaseScore,
-            ExtraScore:Boss.ExtraTimeScore,
-            SkillTipsList:Boss.BossSkillTipsList,
-        })
-    }
-    for (const Level of HardLevels) {
-        const key = hardToString(Level.HardLevel,Level.HardLevelGroup)
-        HardMap.set(key,{
-            HPRatio:Level.HPRatio,
-            ATKRatio:Level.ATKRatio,
-            DEFRatio:Level.DEFRatio,
-            EleRes:Level.ElementalResistRatio,
-        })
-    }
+    // for (const Boss of ArenaBosses) {
+    //     BossMap.set(Boss.MonsterId+","+Boss.BossId,{
+    //         BossId:Boss.BossId,
+    //         Name:Boss.BossName,
+    //         Desc:text_map[Boss.BossDesc.hash],
+    //         GroupId:Boss.BossGroupId,
+    //         MonsterId:Boss.MonsterId,
+    //         HardLevel:Boss.HardLevel,
+    //         HardGroup:Boss.HardLevelGroup,
+    //         MonsterHp:Boss.MonsterHp,
+    //         MonsterLevel:Boss.MonsterLevel,
+    //         NextId:Boss.BossNextId,
+    //         Attribute:Boss.BossAttribute,
+    //         BaseScore:Boss.MonsterBaseScore,
+    //         ExtraScore:Boss.ExtraTimeScore,
+    //         SkillTipsList:Boss.BossSkillTipsList,
+    //     })
+    // }
+    // for (const Level of HardLevels) {
+    //     const key = hardToString(Level.HardLevel,Level.HardLevelGroup)
+    //     HardMap.set(key,{
+    //         HPRatio:Level.HPRatio,
+    //         ATKRatio:Level.ATKRatio,
+    //         DEFRatio:Level.DEFRatio,
+    //         EleRes:Level.ElementalResistRatio,
+    //     })
+    // }
+    // for (const Ability of EliteAbilites) {
+    //     EliteAbilityMap.set(Ability.AbilityName,{
+    //         Desc: text_map[Ability.EliteAbilityDesc.Hash],
+    //         Name: text_map[Ability.EliteAbilityText.Hash],
+    //         Tag: Ability.EliteAbilityTag
+    //     })
+    // }
     for (const Unique of UniqueMonsters) {            
         //if(Unique.UniqueID==e.MonsterId){
             const keyString = keyToString({
@@ -154,7 +170,7 @@ setTimeout(()=>{
             UniqueMap.set(keyString,{
                 //Match:keyString,
                 BossId:"",
-                isBoss:Boolean(Unique.BossRank),
+                isBoss:Boolean(Unique.BossRank)||Unique.MonsterRank==3,
                 MonsterId:Unique.UniqueID,
                 Name:text_map[Unique.Name.Hash],
                 HpRatio:Unique.HPRatio,
@@ -189,53 +205,28 @@ setTimeout(()=>{
             })
         }
     }
+//     EliteAbilityMap.forEach(element => {
+//         writer.write(`
+// ## ${element.Name}
 
+// **${element.Desc}**
+// `)
+//     })
     //output
-    if(!CSV_MODE)writer.write('[\n')
-    if(CSV_MODE)writer.write('id, name, hp, def, res, attribute, elite\n')
-    BossMap.forEach((e,k)=>{
-        PropertiesMap.forEach((element,key) => {
-            const boss = e
-            const base = element
-            const unique = UniqueMap.get(key+","+boss.MonsterId)
-            if(unique==undefined){
-                //console.log("Couldn't Find Match")                
-            }else{
-                let hard = HardMap.get(hardToString(boss.HardLevel,boss.HardGroup))
-                if(hard==undefined){
-                    console.log("no matching hard level")
-                }else{
-                    if(CSV_MODE){
-                        //CSV OUTPUT
-                        //id, name, hp, def, res, attribute, elite
-                        writer.write(`${createID(boss)},${unique?.Name},${boss.MonsterHp},${Number((base.DEF*unique?.DefRatio*hard.DEFRatio).toPrecision(6))},${hard?.EleRes},${getAttribute(boss.Attribute)},${base.Elite}\n`)
-                    }else{
-                        //JSON OUTPUT
-                        writer.write(JSON.stringify({
-                            [createID(boss)]:{
-                                Name:unique?.Name,
-                                Stats:{
-                                    Attr:getAttribute(boss.Attribute),
-                                    HP:boss.MonsterHp,
-                                    ATK:Number((base.ATK*unique?.AtkRatio*hard.ATKRatio).toPrecision(6)),
-                                    DEF:Number((base.DEF*unique?.DefRatio*hard.DEFRatio).toPrecision(6)),
-                                    RES:hard?.EleRes,
-                                    Elite:base.Elite,
-                                    //Abilities:unique.Abilities,
-                                },
-                                MetaData:{
-                                    Rank:getRank(boss.MonsterLevel),
-                                    Bracket:getBracket(boss.BossId),
-                                    Score:boss.BaseScore+boss.ExtraScore,
-                                },
-                            }
-                        })+",\n")
-                    }
-                }   
+    UniqueMap.forEach((element,key) => {
+        if(element.isBoss){//keyConfigStart Broke
+            const keyConfigStart = key.indexOf(',',key.indexOf(',')+1)+1
+            const prop = PropertiesMap.get(key.substring(0,key.lastIndexOf(",")))
+            const config = getConfigFix(key.slice(keyConfigStart,key.indexOf(',',keyConfigStart+1)))
+            console.log(key.slice(keyConfigStart,key.indexOf(',',keyConfigStart)))
+            if(config){
+                writer.write(`
+## ${config}: ${element.Name}
+
+Attribute:${getAttribute(prop?.Attribute)}, HealthBars: ${element.HpSegs} isElite:${Boolean(prop?.Elite)}
+`)
             }
-            
-        })
+        } 
     })
-    if(!CSV_MODE)writer.write(']')
 },250)
 
